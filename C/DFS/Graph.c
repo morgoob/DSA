@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // Graph.c
-// Implementation file for Graph ADT (pa3)
+// Implementation file for Graph ADT 
 // by Morgan Lloyd, moclloyd@ucsc.edu
 //-----------------------------------------------------------------------------
 #include "Graph.h"

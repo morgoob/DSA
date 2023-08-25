@@ -1,6 +1,5 @@
 //-----------------------------------------------------------------------------
 // Order.cpp
-// pa7 client for Dictionary ADT
 //
 // Usage: ./Order <input file> <output file>
 //

@@ -1,6 +1,4 @@
 #------------------------------------------------------------------------------
-#  Makefile for List ADT (pa5)
-#
 #  make                makes Shuffle
 #  make ListTest       make ListTest
 #  make clean          removes binary files

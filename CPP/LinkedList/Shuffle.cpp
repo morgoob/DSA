@@ -1,6 +1,5 @@
 //-----------------------------------------------------------------------------
 // Shuffle.cpp
-// pa5 client for List ADT
 //
 // For each n in the range 1 to n, program will perform shuffles until the list
 // (0, 1, ..., n-1) is brought back to original order

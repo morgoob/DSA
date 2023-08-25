@@ -1,6 +1,4 @@
 #------------------------------------------------------------------------------
-#  Makefile for CMPS 101 Programming Assignment 2
-#
 #  make                     makes FindPath
 #  make GraphTest         makes GraphTest
 #  make clean               removes binaries

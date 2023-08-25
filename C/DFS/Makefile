@@ -1,6 +1,4 @@
 #------------------------------------------------------------------------------
-#  Makefile for CSE 101 Programming Assignment 3
-#
 #  make                     makes FindComponents
 #  make GraphTest           makes GraphTest
 #  make clean               removes binaries

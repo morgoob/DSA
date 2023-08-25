@@ -8,9 +8,11 @@ Welcome to my repository for Data Structures and Algorithms projects implemented
 
 This project implements a Dictionary Abstract Data Type (ADT) using a Binary Search Tree (BST) data structure. The dictionary supports key-value pairs and provides efficient insertion, deletion, and retrieval operations. It demonstrates fundamental concepts of binary trees and efficient searching.
 
-### Another Dictionary ADT based on a Hash Table
+### Dictionary ADT Implementation Using Red-Black Tree
 
-This project presents another implementation of a Dictionary ADT, this time utilizing a Hash Table data structure. The dictionary offers key-value mappings and utilizes hashing techniques for quick access to stored elements. It serves as an example of hash table concepts and collision resolution strategies.
+This project implements a Dictionary Abstract Data Type (ADT) using a Red-Black Tree data structure. This implementation provides key-value mappings with efficient operations backed by the principles of Red-Black trees. The Red-Black Tree-based dictionary includes concepts of balanced binary search trees and self-balancing techniques for maintaining optimal performance.
+
+
 
 ## LinkedList Implementation
 

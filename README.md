@@ -23,7 +23,7 @@ Welcome to my repository for Data Structures and Algorithms projects implemented
 - **HashTable**: Implementation of a hash table data structure.
 - **LinkedList**: Implementation of a linked list.
 - **QuickSort**: Implementation of the Quick Sort algorithm.
-- **dataGenerator.java**: A Java program for generating sample data.
+- **DataGenerator.java**: A Java program for generating sample data.
 - **IntMinHeap_PriorityQueue**: Implementation of an Integer Minimum Heap and Priority Queue.
 - **Queue**: Implementation of a basic queue data structure.
 

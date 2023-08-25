@@ -1,33 +1,28 @@
-///////////////////////////////////////////////////////////////////////////////
-//---------------------------------------------------------------------------//
-// Programming Assignment 8 -------------------------------------------------//
-// Introduction to Data Structures and Algorithms ---------------------------//
-// by Morgan Lloyd, moclloyd@ucsc.edu ---------------------------------------//
-//---------------------------------------------------------------------------//
-///////////////////////////////////////////////////////////////////////////////
+## Files
 
-Files Submitted:
+- `Order.cpp`: Top-level client for pa8. Usage: `./Order <input file> <output file>`.
 
-Order.cpp	Top level client for pa8.
-		Usage: ./Order <input file> <output file>
-		Written by me. 
+- `Dictionary.h`: Header file with class definition for the Dictionary ADT.
 
-Dictionary.h	Header file with class definition for the Dictionary ADT.
-		Provided on webpage. Unaltered
+- `Dictionary.cpp`: Implementation file for the Dictionary class/ADT. 
 
-Dictionary.cpp	Implementation file for the Dictionary class/ADT. 
-		Written by me. 
+- `DictionaryTest.cpp`: Test client for Dictionary ADT.
 
-DictionaryTest.cpp
-		Test client for Dictionary ADT.
-		Written by me.
+- `Makefile`: Usage:
+  - `make`: Compiles `Order`
+  - `make DictionaryTest`: Compiles `DictionaryTest`
+  - `make clean`: Removes all binaries
+  - `make OrderCheck`: Runs `Order` under valgrind on `in5` and `junk5`
+  - `make DictionaryCheck`: Runs `DictionaryTest` under valgrind
 
-Makefile	Makefile for pa8
-		Altered from class webpage.
-		Usage:
-		make                     makes Order
-		make DictionaryTest      makes DictionaryTest
-		make clean               removes all binaries
-		make OrderCheck          runs Order under valgrind on in5 junk5
-		make DictionaryCheck     runs DictionaryTest under valgrind
-  
+## Usage
+
+To compile and run the different test clients:
+
+```bash
+make                 # Compiles Order
+make DictionaryTest  # Compiles DictionaryTest
+
+# To run valgrind checks
+make OrderCheck      # Runs Order under valgrind on in5 and junk5
+make DictionaryCheck # Runs DictionaryTest under valgrind

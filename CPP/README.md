@@ -1,6 +1,6 @@
 # Data Structures and Algorithms in C++ (2021)
 
-Welcome to my repository for Data Structures and Algorithms projects implemented in C++ in the year 2021. This repository contains various projects related to data structures and algorithms concepts.
+Welcome to my repository for Data Structures and Algorithms projects implemented in C++ in 2021. 
 
 ## Projects Included
 

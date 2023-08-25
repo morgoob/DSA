@@ -1,0 +1,382 @@
+//-----------------------------------------------------------------------------
+// DictionaryClient.cpp
+// A test client for the Dictionary ADT
+//-----------------------------------------------------------------------------
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdexcept>
+#include "Dictionary.h"
+
+#define NUM_KEYS 200
+#define TESTS_PER_FN 5
+
+// Dictionary_test()
+// Calls all function tests and outputs to "output.txt"
+void Dictionary_test();
+
+// <function name>_test()
+// Tests given Dictionary function, focuses on edge cases
+bool size_test(std::ofstream &, Dictionary &, int);
+bool contains_test(std::ofstream &, Dictionary &, keyType, bool);
+bool getValue_test(std::ofstream &, Dictionary &, keyType, valType);
+bool hasCurrent_test(std::ofstream &, Dictionary &, bool);
+bool currentKey_test(std::ofstream &, Dictionary &, keyType);
+bool currentVal_test(std::ofstream &, Dictionary &, keyType, valType);
+bool setValue_test(std::ofstream &, Dictionary &, keyType, valType);
+bool remove_test(std::ofstream &, Dictionary &, keyType);
+bool begin_test(std::ofstream &, Dictionary &, keyType);
+bool end_test(std::ofstream &, Dictionary &, keyType);
+bool next_test(std::ofstream &, Dictionary &, keyType);
+bool prev_test(std::ofstream &, Dictionary &, keyType);
+bool equals_test(std::ofstream &, Dictionary &, Dictionary &, bool);
+bool clear_test(std::ofstream &, Dictionary &);
+
+int main(){
+  std::cout << "**********Dictionary Test**********" << std::endl;
+  std::cout << "Test output will be redirected to 'output.txt'" << std::endl;
+
+  Dictionary A;
+  if (A.contains("f"))
+    std::cout << "fail case 1\n";
+  A.setValue("a", 1);
+  A.setValue("b", 5);
+  A.setValue("e", 10);
+  A.setValue("h", 15);
+  A.setValue("f", 20);
+  A.setValue("i", 100);
+  
+  if (A.getValue("f") != 20)
+    std::cout << "fail case 2\n";
+  
+  A.remove("f");
+  
+  if (A.contains("f"))
+    std::cout << "fail case 3\n";
+    // A.setValue("a", 1);
+  // A.setValue("b", 5);
+  // A.setValue("c", 16);
+  // A.setValue("d", 176);
+  // A.setValue("e", 3214);
+  // A.begin();
+  // std::cout << "next #1\n";
+  // A.next();
+  // std::cout << "next #2\n";
+  // A.next();
+  
+  // if (A.currentKey() != "c" || A.currentVal() != 16)
+  //   std::cout << "case 1 FAIL\n";
+  // std::cout << "next #3\n";
+  // A.next();
+  // std::cout << "next #4\n";
+  // A.next();
+  // std::cout << "next #5\n";
+  // A.next();
+  // if (A.hasCurrent())
+  //   std::cout << "case 2 FAIL";
+  // std::cout << "SUCCESS\n";
+  // std::string token;
+  // std::string inOrder = A.to_string();
+  // size_t begin, end;
+  // bool foundNkey = false;
+  // bool foundKey = false;
+  // int tokensAfterNkey = 0;
+  // keyType Nkey, key;
+  // Nkey = "d";
+  // std::cout << std::endl << "inORder string: " << inOrder << std::endl;
+  // begin = std::min(inOrder.find_first_not_of(" \n", 0), inOrder.length());
+  // end = std::min(inOrder.find_first_of(" \n", begin), inOrder.length());
+  // token = inOrder.substr(begin, end-begin);
+  // while(token != "" && !foundKey){
+  //   std::cout << "token: " << token << std::endl;
+  //   std::cout << "tokensAfterNkey: " << tokensAfterNkey << std::endl;
+  //   if(token == Nkey) foundNkey = true;
+  //   if(foundNkey == true) tokensAfterNkey++;
+  //   if(tokensAfterNkey == 4) {
+  //     std::cout << "found key after d: " << token << std::endl; 
+  //     key = token;
+  //     foundKey = true;
+  //   }
+  //   begin = std::min(inOrder.find_first_not_of(" \n", end+1), inOrder.length());
+  //   end = std::min(inOrder.find_first_of(" \n", begin), inOrder.length());
+  //   token = inOrder.substr(begin, end-begin);
+  // }
+  
+  //Dictionary_test();
+  return(EXIT_SUCCESS);
+}
+
+void Dictionary_test(){
+  std::ofstream out;
+  std::string outfile = "output.txt";
+
+  out.open(outfile);
+  if(!out.is_open()){
+    std::cerr << "Unable to open " << outfile << " for writing. Exiting..." << std::endl;
+    return;
+  }
+
+  Dictionary D;
+  
+  out << "**********Dictionary Test**********" << std::endl;
+  
+  out << std::endl << "**********size() Test**********" << std::endl;
+  if(size_test(out, D, 0)){
+    out << "size() test 1: PASSED" << std::endl;
+  } else {
+    out << "size() test 1: FAILED" << std::endl;
+  }
+  for(int i = 0; i < NUM_KEYS; i++){
+    D.setValue(std::to_string(i), i);
+  }
+
+  if(size_test(out, D, NUM_KEYS)){
+    out << "size() test 2: PASSED" << std::endl;
+  } else {
+    out << "size() test 2: FAILED" << std::endl;
+  }
+  
+  out << std::endl << "**********contains() Test**********" << std::endl;
+  for(int i = 0; i < TESTS_PER_FN; i++){
+    if(contains_test(out, D, std::to_string(i), true)){
+      out << "contains() test " << i << ": PASSED" << std::endl;
+    } else {
+      out << "contains() test " << i << ": FAILED" << std::endl;
+    }
+  }
+  out << std::endl << "**********next() Test**********" << std::endl;
+  if(next_test(out, D, std::to_string(1))){
+    out << "next() test: PASSED" << std::endl;
+  } else {
+    out << "next() test: FAILED" << std::endl;
+  }
+  
+  out << std::endl << "**********prev() Test**********" << std::endl;
+  if(prev_test(out, D, std::to_string(0))){
+    out << "prev() test: PASSED" << std::endl;
+  } else {
+    out << "prev() test: FAILED" << std::endl;
+  } 
+  out << std::endl << "**********getValue() Test**********" << std::endl;
+  for(int i = 0; i < TESTS_PER_FN; i++){
+    if(getValue_test(out, D, std::to_string(i), i)){
+      out << "getValue() test " << i << ": PASSED" << std::endl;
+    } else {
+      out << "getValue() test " << i << ": FAILED" << std::endl;
+    }
+  }
+  
+  out << std::endl << "**********hasCurrent() Test**********" << std::endl;
+  D.begin();
+  if(hasCurrent_test(out, D, true)){
+    out << "hasCurrent() test: PASSED" << std::endl;
+  } else {
+    out << "hasCurrent() test: FAILED" << std::endl;
+  }
+  
+  out << std::endl << "**********currentKey() Test**********" << std::endl;
+  D.begin();
+  for(int i = 0; i < TESTS_PER_FN; i++){
+    if(currentKey_test(out, D, std::to_string(i))){
+      out << "currentKey() test " << i << ": PASSED" << std::endl;
+    } else {
+      out << "currentKey() test " << i << ": FAILED" << std::endl;
+    }
+    D.next();
+  }
+  
+  out << std::endl << "**********currentVal() Test**********" << std::endl;
+  D.begin();
+  for(int i = 0; i < TESTS_PER_FN; i++){
+    if(currentVal_test(out, D, std::to_string(i), i)){
+      out << "currentVal() test " << i << ": PASSED" << std::endl;
+    } else {
+      out << "currentVal() test " << i << ": FAILED" << std::endl;
+    }
+    D.next();
+  }
+  
+  out << std::endl << "**********setValue() Test**********" << std::endl;
+  for(int i = 0; i < TESTS_PER_FN; i++){
+    if(setValue_test(out, D, std::to_string(NUM_KEYS +i), NUM_KEYS+i)){
+      out << "setValue() test " << i << ": PASSED" << std::endl;
+    } else {
+      out << "setValue() test " << i << ": FAILED" << std::endl;
+    }
+  }
+  
+  out << std::endl << "**********begin() Test**********" << std::endl;
+  if(begin_test(out, D, std::to_string(0))){
+    out << "begin() test: PASSED" << std::endl;
+  } else {
+    out << "begin() test: FAILED" << std::endl;
+  }
+  
+  out << std::endl << "**********end() Test**********" << std::endl;
+  if(end_test(out, D, std::to_string(NUM_KEYS+TESTS_PER_FN))){
+    out << "end() test: PASSED" << std::endl;
+  } else {
+    out << "end() test: FAILED" << std::endl;
+  }
+
+  out << std::endl << "**********remove() Test**********" << std::endl;
+  for(int i = 0; i < NUM_KEYS; i++){
+    if(remove_test(out, D, std::to_string(NUM_KEYS-i))){
+      if(i%50 == 0) {
+  	out << "remove() test " << i/50 << ": PASSED" << std::endl;
+      }
+    } else {
+      out << "remove() test " << i/50 << ": FAILED" << std::endl;
+    }
+  }
+  
+
+  
+  Dictionary E;
+  out << std::endl << "**********equals() Test**********" << std::endl;
+  if(equals_test(out, D, E, false)){
+    out << "equals() test 1: PASSED" << std::endl;
+  } else {
+    out << "equals() test 1: FAILED" << std::endl;
+  }
+  E = D;
+  if(equals_test(out, D, E, true)){
+    out << "equals() test 1: PASSED" << std::endl;
+  } else {
+    out << "equals() test 1: FAILED" << std::endl;
+  } 
+
+  out << std::endl << "**********clear() Test**********" << std::endl;
+  if(clear_test(out, D)){
+    out << "clear() test: PASSED" << std::endl;
+  } else {
+    out << "clear() test: FAILED" << std::endl;
+  }
+ 
+}
+
+bool size_test(std::ofstream &out, Dictionary &D, int expected){
+  return(D.size() == expected);
+}
+
+bool contains_test(std::ofstream &out, Dictionary &D, keyType k, bool expected){
+  return(D.contains(k) == expected);
+}
+
+bool getValue_test(std::ofstream &out, Dictionary &D, keyType k, valType expected){
+  valType val = -1;
+  try {
+    val = D.getValue(k);
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(val == expected);
+}
+
+bool hasCurrent_test(std::ofstream &out, Dictionary &D, bool expected){
+  return(D.hasCurrent() == expected);
+}
+
+bool currentKey_test(std::ofstream &out, Dictionary &D, keyType expected){
+  keyType k = "Not the expected key";
+  try {
+    k = D.currentKey();
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(k == expected);
+}
+
+bool currentVal_test(std::ofstream &out, Dictionary &D, keyType k, valType expected){
+  valType v = -1;
+  try {
+    v = D.currentVal();
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(v == expected);
+}
+
+bool setValue_test(std::ofstream &out, Dictionary &D, keyType k, valType v){
+  if(D.contains(k)) D.remove(k);
+  D.setValue(k, v);
+  D.begin();
+  return(D.contains(k));
+}
+
+bool remove_test(std::ofstream &out, Dictionary &D, keyType k){
+  try {
+    D.remove(k);
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  D.begin();
+  return(!D.contains(k));
+}
+
+// parameter expected is first key in dictionary
+bool begin_test(std::ofstream &out, Dictionary &D, keyType expected){
+  keyType k = "Not the first key";
+  D.begin();
+  try{
+    k = D.currentKey();
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(k == expected);
+}
+
+// parameter expected is last key in dictionary
+bool end_test(std::ofstream &out, Dictionary &D, keyType expected){
+  keyType k = "Not the last key";
+  D.end();
+  try{
+    k = D.currentKey();
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(k == expected);
+}
+
+// Expected is the second key in the dictionary 
+bool next_test(std::ofstream &out, Dictionary &D, keyType expected){
+  keyType k = "Not expected key";
+  D.begin(); 
+  try {
+    D.next();
+    k = D.currentKey();
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(k == expected);
+}
+
+// Expected is the first key in the dictionary
+bool prev_test(std::ofstream &out, Dictionary &D, keyType expected){
+  keyType k = "Not expected key";
+  D.end();
+  try {
+    D.prev();
+    k = D.currentKey();
+  } catch(std::logic_error &e){
+    out << "Exception caught: " << e.what() << std::endl;
+    return(false);
+  }
+  return(k == expected);
+}
+
+bool equals_test(std::ofstream &out, Dictionary &D, Dictionary &E, bool expected){
+  return(D.equals(E) == expected);
+}
+
+bool clear_test(std::ofstream &out, Dictionary &D){
+  D.clear();
+  return(D.size() == 0);
+}

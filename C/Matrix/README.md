@@ -1,44 +1,38 @@
-///////////////////////////////////////////////////////////////////////////////
-//---------------------------------------------------------------------------//
-// Programming Assignment 4 -------------------------------------------------//
-// Introduction to Data Structures and Algorithms ---------------------------//
-// by Morgan Lloyd, moclloyd@ucsc.edu ---------------------------------------//
-//---------------------------------------------------------------------------//
-///////////////////////////////////////////////////////////////////////////////
+## Files
 
-Files Submitted:
+- `List.h`: Header file for the List ADT. 
 
-List.h		Header file for the List ADT.
-		Written by me
+- `List.c`: Implementation file for the List ADT. 
 
-List.c		Implementation file for the List ADT. 
-		Written by me. Queue.c example was referenced in some areas.
+- `ListTest.c`: Test client for List ADT. 
 
-ListTest.c	Test client for List ADT.
-		Written by me.
+- `Matrix.c`: Implementation file for the Matrix ADT.
 
-Matrix.c	Implementation file for the Matrix ADT.
-		Written by me.
+- `Matrix.h`: Header file for the Matrix ADT. 
 
-Matrix.h	Header file for the Matrix ADT.
-		Written by me.
+- `MatrixTest.c`: Test client for the Matrix ADT. 
 
-MatrixTest.c	Test client for the Matrix ADT.
-		Written by me.
+- `Sparse.c`: Client file for the Matrix ADT. Usage: `./Sparse <input file> <output file>`.
 
-Sparse.c	Client file for the Matrix ADT.
-		Written by me.
-		Usage:
-		./Sparse <input file> <output file>
+- `Makefile`: Usage:
+  - `make`: Compiles `Sparse`
+  - `make MatrixTest`: Compiles `MatrixTest`
+  - `make ListTest`: Compiles `ListTest`
+  - `make clean`: Removes all binaries
+  - `make SparseCheck`: Runs `Sparse` in valgrind on `in5`
+  - `make MatrixCheck`: Runs `MatrixTest` in valgrind
+  - `make ListCheck`: Runs `ListTest` in valgrind
 
-Makefile	Makefile for pa4
-		Altered from class webpage.
-		Usage:
-		make                     makes Sparse
-  		make MatrixTest          makes MatrixTest
-  		make ListTest            makes ListTest
-  		make clean               removes all binaries
-  		make SparseCheck         runs Sparse in valgrind on in5
-  		make MatrixCheck         runs MatrixTest in valgrind
-  		make ListCheck           runs ListTest in valgrind
-    
+## Usage
+
+To compile and run the different test clients:
+
+```bash
+make                 # Compiles Sparse
+make MatrixTest      # Compiles MatrixTest
+make ListTest        # Compiles ListTest
+
+# To run valgrind checks
+make SparseCheck     # Runs Sparse in valgrind on in5
+make MatrixCheck     # Runs MatrixTest in valgrind
+make ListCheck       # Runs ListTest in valgrind

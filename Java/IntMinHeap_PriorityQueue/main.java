@@ -1,6 +1,5 @@
 // Morgan Lloyd, mlloyd@Pengo.cabrillo.edu
 // morganlloydd@gmail.com
-// Assignment 2, Integer Minimum Heap and Priority Queue
 // working, tested
 
 import java.util.Scanner;

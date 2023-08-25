@@ -1,7 +1,5 @@
 // Morgan Lloyd, mlloyd@Pengo.cabrillo.edu
 // morganlloydd@gmail.com
-// filename: p3.java
-// Assignment 3, Quicksort
 // working/tested (compiles)
 
 import java.util.Scanner;

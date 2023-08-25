@@ -1,7 +1,6 @@
 // hashTable class for p5.java
 // Morgan Lloyd
 // morganlloydd@gmail.com
-// Assignment 5, Hash Table
 // working/tested
 
 import java.lang.Math;

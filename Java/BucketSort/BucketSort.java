@@ -1,6 +1,5 @@
 // Morgan Lloyd, mlloyd@Pengo.cabrillo.edu
 // morganlloydd@gmail.com
-// Assignment 4, Radix/Bucket sort hybrid
 // working/tested (compiles)
 import java.util.ArrayList;
 import java.lang.Math;

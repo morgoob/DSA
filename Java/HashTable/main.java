@@ -1,6 +1,5 @@
 // Morgan Lloyd, mlloyd@pengo.cabrillo.edu
 // morganlloydd@gmail.com
-// Assignment 5, Hash Table
 // working/tested (compiles)
 import java.util.Scanner;
 import java.io.BufferedReader;

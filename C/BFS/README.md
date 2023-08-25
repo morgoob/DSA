@@ -1,22 +1,18 @@
-# Programming Assignment 2: Introduction to Data Structures and Algorithms
+## Files
 
-Programming Assignment 2 for the Introduction to Data Structures and Algorithms course by Morgan Lloyd (moclloyd@ucsc.edu).
+- `List.h`: Header file for the List ADT. Included in `List.c`, `FindPath.c`, `Graph.c`, `Graph.h`, and `GraphTest.c`. 
 
-## Files Submitted
+- `List.c`: Implementation file for the List ADT. Some areas were referenced from the `Queue.c` example.
 
-- `List.h`: Header file for the List ADT. Included in `List.c`, `FindPath.c`, `Graph.c`, `Graph.h`, and `GraphTest.c`. Written by me.
-
-- `List.c`: Implementation file for the List ADT. Written by me. Some areas were referenced from the `Queue.c` example.
-
-- `Graph.c`: Implementation file for the Graph ADT. Written by me. Pseudocode on the webpage was referenced.
+- `Graph.c`: Implementation file for the Graph ADT. 
 
 - `Graph.h`: Header file for the Graph ADT. Included in `Graph.c`, `FindPath.c`, and `GraphTest.c`.
 
-- `GraphTest.c`: Test client for Graph ADT. Written by me.
+- `GraphTest.c`: Test client for Graph ADT. 
 
 - `FindPath.c`: Client program using the Graph ADT. Finds shortest paths between pairs of vertices. Usage: `./FindPath <input file> <output file>`.
 
-- `Makefile`: Makefile for the assignment. Written by me. Usage:
+- `Makefile`: Makefile for the assignment. Usage:
   - `make`: Compiles `FindPath`
   - `make GraphClient`: Compiles `GraphClient`
   - `make clean`: Removes all binaries

@@ -1,4 +1,4 @@
-// hashTable class for p5.java
+// hashTable class 
 // Morgan Lloyd
 // morganlloydd@gmail.com
 // working/tested
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class hashTable{
     ArrayList<ArrayList<hashNode>> hashTable = new ArrayList<ArrayList<hashNode>>();
     // m = capacity
+    private static final int DEFAULT_SIZE = 100;
     int m;
     int size;
 
@@ -24,7 +25,7 @@ public class hashTable{
 
     public hashTable(){
         this.size = 0;
-        this.m = 100;
+        this.m = DEFAULT_SIZE;
         genHash();
     }
 
